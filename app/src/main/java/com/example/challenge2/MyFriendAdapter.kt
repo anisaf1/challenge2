@@ -2,14 +2,13 @@ package com.example.challenge2
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.my_friend_item.*
 
-class MyFriendAdapter(private  val context: Context, private val item: ArrayList<MyFriend>) :
+class MyFriendAdapter(private val context: Context, private val items: ArrayList<MyFriend>) :
 RecyclerView.Adapter<MyFriendAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
@@ -17,11 +16,11 @@ RecyclerView.Adapter<MyFriendAdapter.ViewHolder>(){
     )
 
     override fun getItemCount(): Int {
-        return item.size
+        return items.size
     }
 
-    override fun onBindViewHolder(holder: MyFriendAdapter.ViewHolder, position: Int) {
-        holder.bindItem(item.get(position))
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bindItem(items.get(position))
     }
 
     class ViewHolder(override val containerView:View):
