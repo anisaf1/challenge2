@@ -81,7 +81,7 @@ class GithubFragment : Fragment() {
         listCovidProv.adapter = CovidProvAdapter(context!!,covidProv){
 
             val covidProvs = it
-//            tampilToast(context!!, covidProvs.attributes)
+            tampilToast(context!!, covidProvs.attributes.toString())
         }
     }
 
