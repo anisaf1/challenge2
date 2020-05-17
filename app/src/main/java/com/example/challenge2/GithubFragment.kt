@@ -1,6 +1,7 @@
 package com.example.challenge2
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,16 +45,18 @@ class GithubFragment : Fragment() {
 
         val httpClient = httpClient()
         val apiRequest = apiRequest<CovidProvService>(httpClient)
-
         val call = apiRequest.getCovidProv()
+
         call.enqueue(object: Callback<List<CovidProvItem>> {
 
             override fun onFailure(call:Call<List<CovidProvItem>>, t: Throwable) {
                 dismissLoading(swipRefreshLayout)
+                Log.d("Try", "onFailure"+t.message)
             }
 
             override fun onResponse(call:Call<List<CovidProvItem>>, response:Response<List<CovidProvItem>>) {
                 dismissLoading(swipRefreshLayout)
+                Log.d("Try", "onResponse")
 
                 when {
                     response.isSuccessful ->
@@ -80,6 +83,7 @@ class GithubFragment : Fragment() {
         listCovidProv.layoutManager = LinearLayoutManager(context)
         listCovidProv.adapter = CovidProvAdapter(context!!,covidProv){
 
+            Log.d("Try", "tampilConidProv")
             val covidProvs = it
             tampilToast(context!!, covidProvs.attributes.toString())
         }

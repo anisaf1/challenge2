@@ -30,7 +30,7 @@ RecyclerView.Adapter<CovidProvAdapter.ViewHolder>(){
     class ViewHolder(val context: Context, override val containerView: View):
             RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bindItem(item:CovidProvItem, listener: (CovidProvItem) -> Unit) {
-            txtProv.text = item.attributes.kodeProvi.toString()
+            txtProv.text =item.attributes.provinsi
             txtPositif.text = item.attributes.kasusPosi.toString()
             txtSembuh.text = item.attributes.kasusSemb.toString()
             txtMeninggal.text = item.attributes.kasusMeni.toString()
